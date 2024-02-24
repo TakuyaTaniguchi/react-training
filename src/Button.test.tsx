@@ -16,3 +16,11 @@ test('Button', () => {
   const buttonElement = screen.getByText('Click me');
   expect(buttonElement).toBeInTheDocument();
 });
+
+test('ButtonClick', () => {
+  const onClick = jest.fn();
+  render(<Button label="Click me" onClick={onClick} />);
+  const buttonElement = screen.getByText('Click me');
+  fireEvent.click(buttonElement);
+  expect(onClick).toHaveBeenCalledTimes(1); // 関数が1回呼び出されたことを確認する
+});
